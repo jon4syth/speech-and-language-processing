@@ -13,6 +13,17 @@ class TestEditDistance(unittest.TestCase):
                 len(self.source)
         )
 
+    def test_edit_distance_when_source_is_empty_string(self):
+        self.assertEqual(
+                edit_dist.get_distance("", self.source),
+                len(self.source)
+        )
+
+    def test_edit_distance_when_source_and_target_are_different(self):
+        self.assertEqual(
+                edit_dist.get_distance(self.target, self.source),
+                8
+        )
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,16 +11,29 @@ def get_distance(target="", source=""):
     if target == "" and source == "":
         return "Both args are empty strings!"
 
+    cost = 0
+
+    # cost of moving from non-zero length string to empty string
     if target == "":
-        cost = 0
 
         for char in source:
-            cost = cost + insertion_cost_table[char]
+            cost = cost + deletion_cost(char)
 
         return cost
 
-## Cost Table
-insertion_cost_table = ({
+    # cost of moving from empty string to non-zero length string
+
+# Cost of insertion--we could add a multiplier for certain letters
+def insertion_cost(char):
+    return cost_table[char]
+
+# Cost of deletion--we could add a multiplier for certain letters
+def deletion_cost(char):
+    return cost_table[char]
+
+
+## Cost Table for insertions and deletions
+cost_table = ({
    'A': 1, 'a': 1,
    'B': 1, 'b': 1,
    'C': 1, 'c': 1,
